@@ -29,7 +29,7 @@ public class Node {
     public int getUpWeight() {
         return weights[0];
     }
-    public int getUpNode() {
+    public int getUpNodeNumber() {
         return edges[0].number;
     }
 
@@ -37,20 +37,27 @@ public class Node {
         return weights[1];
     }
 
-    public int getDownNode() {
+    public int getDownNodeNumber() {
         return edges[1].number;
     }
 
     public int getNumber() {
         return number;
     }
-
-    public boolean hasEdge() {
+    public boolean hasUpEdge() {
         return edges[0] != null;
     }
 
-    public boolean hasTwoEdges() {
+    public boolean hasDownEdge() {
         return edges[1] != null;
+    }
+
+    public boolean hasEdge() {
+        return edges[0] != null || edges[1] != null;
+    }
+
+    public boolean hasTwoEdges() {
+        return edges[1] != null && edges[0] != null;
     }
 
     
