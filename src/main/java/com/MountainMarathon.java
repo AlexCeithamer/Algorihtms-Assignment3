@@ -128,8 +128,8 @@ public class MountainMarathon {
     }
 
     public int FindBestRoute() {
-        //2d array keeps track of the weight we have to that node if we come from above or below
-        int[] dp = new int[numberOfNodes]; // [node][up/down]
+        //2d array keeps track of the weight we have to that node (node 1 = index 0)
+        int[] dp = new int[numberOfNodes]; // [node]
         //keep track of the current direction, so that if we switch direction, we can add the turn penalty
         int[] direction = new int[numberOfNodes]; // 0 = up, 1 = down
         //initialize array since weight of 0 when starting at node 1 (which is index 0)
