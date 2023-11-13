@@ -2,6 +2,14 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * This class solves the Mountain Marathon problem for assignment 3 of Algorithms. It uses a
+ * dynamic programming approach to find the best path through the graph. It does so with a 
+ * bottom-up approach, starting at the first node and working its way up through each node.
+ * It also inputs the file into a graph with nodes to solve the problem
+ * 
+ * Authors: Alex Ceithamer, Alden Sprackling
+ */
 public class MountainMarathon {
 
     private int turnPenalty;
@@ -9,6 +17,12 @@ public class MountainMarathon {
     private Node[] graph;
 
 
+    /**
+     * This is the main method. It creates a MountainMarathon object and calls ReadInput to read
+     * the input file, which calls CreateGraph to create the graph. It then calls FindBestRoute to find
+     * the best route through the graph and prints it to the console
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         MountainMarathon marathon = new MountainMarathon();
 
@@ -21,6 +35,12 @@ public class MountainMarathon {
         }
     }
 
+    /**
+     * This method reads the input file and parses it into an array of weights. It then calls
+     * CreateGraph to create the graph from the weights
+     * @param filename the name of the file to read
+     * @throws IOException if the file cannot be read
+     */
     public void ReadInput(String filename) throws IOException {
         File file = new File(filename);
         Scanner scanner = new Scanner(file);
@@ -41,6 +61,12 @@ public class MountainMarathon {
     }
 
 
+    /**
+     * This method creates the graph from the data array. It does so by creating nodes and then
+     * connecting them with edges. It does this by iterating through the data array and assigning
+     * weights and edges to each node
+     * @param data the array of weights to assign to the edges
+     */
     public void CreateGraph(int[] data) {
         graph = new Node[numberOfNodes];
 
@@ -107,6 +133,11 @@ public class MountainMarathon {
         }
     }
 
+    /**
+     * This method finds the best route through the graph using a bottom-up dynamic programming approach.
+     * Specifically, the bottom-up approach.
+     * @return the best route through the graph
+     */
     public int FindBestRoute() {
         //2d array keeps track of the weight we have to that node (node 1 = index 0)
         //the 0 slot indicates the best weight from the node pointing up at it.
