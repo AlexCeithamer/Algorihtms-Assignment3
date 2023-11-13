@@ -1,0 +1,33 @@
+<project>
+    <target name="clean">
+        <delete dir="Classes"/>
+        <delete dir="Documentation"/>
+    </target>
+
+<!-- This assumes all of your Java files are in a src/main/java folder -->
+<!-- Will compile your Java files and place the class files in a Classes folder -->
+    <target name="compile">
+        <mkdir dir="Classes"/>
+        <javac includeantruntime="false" destdir="Classes" srcdir="src/main/java"/>
+    </target>
+
+<!-- This calls javadoc and produces documentation -->
+    <target name="docs">
+        <mkdir dir="Documentation"/>
+        <javadoc destdir="Documentation">
+            <fileset dir="src/main/java" includes="*.java"/>
+        </javadoc>
+    </target>
+
+<!-- This assumes your main method is inside Tester.java -->
+    <target name="run">
+        <java classpath="Classes" classname="MountainMarathon"/>
+    </target>
+    <target name="all">
+        <antcall target="clean"/>
+        <antcall target="compile"/>
+        <antcall target="docs"/>
+        <antcall target="run"/>
+    </target>
+
+</project>

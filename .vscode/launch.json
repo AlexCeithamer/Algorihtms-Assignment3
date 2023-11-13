@@ -14,7 +14,7 @@
             "type": "java",
             "name": "MountainMarathon",
             "request": "launch",
-            "mainClass": "com.MountainMarathon",
+            "mainClass": "MountainMarathon",
             "projectName": "assignment3"
         }
     ]
