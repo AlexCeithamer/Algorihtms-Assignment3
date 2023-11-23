@@ -172,9 +172,15 @@ public class MountainMarathon {
                     dp[upNodeIndex][0] = dp[i][0] + currentNode.getUpWeight();
                 }
                 else {
-                    //Assign value accordingly (same as the 2 above if statements, but choosing the max value path)
-                    dp[upNodeIndex][0] = Math.max(dp[i][0] + currentNode.getUpWeight(), 
+                    //if we are on the first node we only have 1 option, which is the weight.
+                    if (i == 0) {
+                        dp[upNodeIndex][0] = dp[i][0] + currentNode.getUpWeight();
+                    }
+                    else {
+                        //Assign value accordingly (same as the 2 above if statements, but choosing the max value path)
+                        dp[upNodeIndex][0] = Math.max(dp[i][0] + currentNode.getUpWeight(), 
                                                 dp[i][1] + currentNode.getUpWeight() + turnPenalty);
+                    }
                 }
             }
             if (currentNode.hasDownEdge()) {
@@ -193,9 +199,15 @@ public class MountainMarathon {
                     dp[downNodeIndex][1] = dp[i][1] + currentNode.getDownWeight();
                 }
                 else {
-                    //Assign value accordingly (same as the 2 above if statements, but choosing the max value path)
-                    dp[downNodeIndex][1] = Math.max(dp[i][1] + currentNode.getDownWeight(), 
+                    //if we are on the first node we only have 1 option, which is the weight.
+                    if (i == 0) {
+                        dp[downNodeIndex][1] = dp[i][0] + currentNode.getDownWeight();
+                    }
+                    else {
+                        //Assign value accordingly (same as the 2 above if statements, but choosing the max value path)
+                        dp[downNodeIndex][1] = Math.max(dp[i][1] + currentNode.getDownWeight(), 
                                                     dp[i][0] + currentNode.getDownWeight() + turnPenalty);
+                    }
                 }
                 
             }
